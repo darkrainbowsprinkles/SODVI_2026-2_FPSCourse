@@ -1050,6 +1050,7 @@ GameObject:
   - component: {fileID: 1636690427}
   - component: {fileID: 1636690428}
   - component: {fileID: 1636690426}
+  - component: {fileID: 1636690429}
   - component: {fileID: 1636690425}
   m_Layer: 0
   m_Name: Player
@@ -1070,8 +1071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9ea71bedccd2640a8ceed773652b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  movementSpeed: 5
-  sprintMultiplier: 1.5
+  walkSpeedFraction: 0.5
+  sprintSpeedFraction: 1
 --- !u!114 &1636690426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,6 +1144,19 @@ CharacterController:
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1636690429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636690424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0528a827c5f64f14ea8f3767fbf02864, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mover
+  maxSpeed: 10
 --- !u!1 &1955118792
 GameObject:
   m_ObjectHideFlags: 0

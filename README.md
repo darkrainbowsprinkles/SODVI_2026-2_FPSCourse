@@ -1,2 +1,2 @@
-# SODVI_2026-2_FPSCourse
-Unity FPS Course / Intermediate Unity C# Game Development
+# SODVI 2026-2 Intermediate Unity - First Person Shooter
+...
