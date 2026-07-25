@@ -1,3 +1,4 @@
+using FPS.Core;
 using UnityEngine;
 
 namespace FPS.Combat
@@ -11,7 +12,10 @@ namespace FPS.Combat
 
             if (Physics.Raycast(cameraPosition, cameraForward, out RaycastHit hit, Mathf.Infinity))
             {
-                print(hit.transform.name);
+                if (hit.transform.TryGetComponent(out Health health))
+                {
+                    health.TakeDamage(50);
+                }
             }
         }
     }
