@@ -1401,7 +1401,7 @@ PrefabInstance:
     - target: {fileID: 7478035199575807547, guid: aeac131b411e61a4395799b2aab95984, type: 3}
       propertyPath: defaultGunSO
       value: 
-      objectReference: {fileID: 11400000, guid: dd6f5cf7f3927114aab5708d03127383, type: 2}
+      objectReference: {fileID: 11400000, guid: 246a3bc1a1f7c934b8f51bc030f1677b, type: 2}
     - target: {fileID: 7478035199575807547, guid: aeac131b411e61a4395799b2aab95984, type: 3}
       propertyPath: gunContainer
       value: 
