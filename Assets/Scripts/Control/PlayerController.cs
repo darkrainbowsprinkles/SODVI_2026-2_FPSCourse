@@ -1,3 +1,4 @@
+using FPS.Combat;
 using FPS.Movement;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,11 +11,13 @@ namespace FPS.Control
         [SerializeField, Range(0,1)] float sprintSpeedFraction = 1f;
         PlayerInput playerInput;
         Mover mover;
+        Fighter fighter;
 
         void Awake()
         {
             playerInput = GetComponent<PlayerInput>();
             mover = GetComponent<Mover>();
+            fighter = GetComponent<Fighter>();
         }
 
         void Start()
@@ -35,7 +38,7 @@ namespace FPS.Control
 
             if (fireAction.WasPressedThisFrame())
             {
-                print("FIRING!!!");
+                fighter.Fire();
             }
         }
 
