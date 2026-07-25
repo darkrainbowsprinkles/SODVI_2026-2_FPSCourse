@@ -11,6 +11,11 @@ namespace FPS.Core
         {
             currentHealth = Mathf.Max(currentHealth - damage, 0f);
             print($"{name} - Current health = {currentHealth}");
+
+            if (currentHealth == 0)
+            {
+                Destroy(gameObject);
+            }
         }
 
         void Awake()

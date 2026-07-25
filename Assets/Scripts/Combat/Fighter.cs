@@ -15,6 +15,17 @@ namespace FPS.Combat
             return currentGunSO;
         }
 
+        public void EquipGun(GunSO newGunSO)
+        {
+            if (currentGun != null)
+            {
+                Destroy(currentGun.gameObject);
+            }
+
+            currentGunSO = newGunSO;
+            currentGun = newGunSO.Spawn(gunContainer);
+        }
+
         public void Fire()
         {
             if (timeSinceLastFire < currentGunSO.GetCooldown())
@@ -34,12 +45,6 @@ namespace FPS.Combat
         void Update()
         {
             timeSinceLastFire += Time.deltaTime;
-        }
-
-        void EquipGun(GunSO newGunSO)
-        {
-            currentGunSO = newGunSO;
-            currentGun = newGunSO.Spawn(gunContainer);
         }
     }
 }

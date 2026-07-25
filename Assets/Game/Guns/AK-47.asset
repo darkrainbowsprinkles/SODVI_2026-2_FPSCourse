@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AK-47
   m_EditorClassIdentifier: Assembly-CSharp::FPS.Combat.GunSO
   gunPrefab: {fileID: 5050263930335871385, guid: d101b3d6b998c9940852034ac1459bb5, type: 3}
-  damage: 5
+  damage: 10
   range: 60
   cooldown: 0.15
   isAutomatic: 1
