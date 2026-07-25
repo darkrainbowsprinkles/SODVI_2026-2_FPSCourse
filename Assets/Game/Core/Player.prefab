@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f881965d9826848489a7d0eea2d58a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPS.Combat.Fighter
-  gunPrefab: {fileID: 147831575329651991, guid: 095e386908797e044a398f919424fe79, type: 3}
+  defaultGunSO: {fileID: 11400000, guid: 246a3bc1a1f7c934b8f51bc030f1677b, type: 2}
   gunContainer: {fileID: 0}
 --- !u!114 &9112587151666805533
 MonoBehaviour:
@@ -133,6 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5fdfaf88728cd4792074aba074376d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FPS.Core.Health
+  maxHealth: 200
 --- !u!114 &176306639588357903
 MonoBehaviour:
   m_ObjectHideFlags: 0

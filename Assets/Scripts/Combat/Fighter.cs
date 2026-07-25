@@ -4,17 +4,18 @@ namespace FPS.Combat
 {
     public class Fighter : MonoBehaviour
     {
-        [SerializeField] Gun gunPrefab;
+        [SerializeField] GunSO defaultGunSO;
         [SerializeField] Transform gunContainer;
+        Gun currrentGun;
 
         public void Fire()
         {
-            gunPrefab.Fire();
+            currrentGun.Fire(defaultGunSO.GetDamage(), defaultGunSO.GetRange());
         }
 
         void Awake()
         {
-            Instantiate(gunPrefab, gunContainer);
+            currrentGun = defaultGunSO.Spawn(gunContainer);
         }
     }
 }
