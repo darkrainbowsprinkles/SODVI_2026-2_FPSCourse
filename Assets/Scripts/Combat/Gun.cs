@@ -5,8 +5,14 @@ namespace FPS.Combat
 {
     public class Gun : MonoBehaviour
     {
+        [SerializeField] Transform muzzle;
+        [SerializeField] GameObject muzzleFlashEffect;
+        [SerializeField] GameObject hitEffect;
+
         public void Fire(float damage, float range)
         {
+            Instantiate(muzzleFlashEffect, muzzle);
+
             Vector3 cameraPosition = Camera.main.transform.position;
             Vector3 cameraForward = Camera.main.transform.forward;
 
@@ -16,6 +22,8 @@ namespace FPS.Combat
                 {
                     health.TakeDamage(damage);
                 }
+
+                Instantiate(hitEffect, hit.point, Quaternion.identity);
             }
         }
     }
