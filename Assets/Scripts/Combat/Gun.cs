@@ -8,10 +8,12 @@ namespace FPS.Combat
         [SerializeField] Transform muzzle;
         [SerializeField] GameObject muzzleFlashEffect;
         [SerializeField] GameObject hitEffect;
+        Animator animator;
 
         public void Fire(float damage, float range)
         {
             Instantiate(muzzleFlashEffect, muzzle);
+            animator.Play("Gun Animation", 0, 0f);
 
             Vector3 cameraPosition = Camera.main.transform.position;
             Vector3 cameraForward = Camera.main.transform.forward;
@@ -25,6 +27,11 @@ namespace FPS.Combat
 
                 Instantiate(hitEffect, hit.point, Quaternion.identity);
             }
+        }
+
+        void Awake()
+        {
+            animator = GetComponentInParent<Animator>();
         }
     }
 }

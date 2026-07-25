@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b582faceabb13674ba28e73edefeb23f, type: 3}
-  m_Name: Pistol
+  m_Name: AK-47
   m_EditorClassIdentifier: Assembly-CSharp::FPS.Combat.GunSO
-  gunPrefab: {fileID: 147831575329651991, guid: 095e386908797e044a398f919424fe79, type: 3}
-  damage: 10
-  range: 30
-  cooldown: 0.5
-  isAutomatic: 0
+  gunPrefab: {fileID: 5050263930335871385, guid: d101b3d6b998c9940852034ac1459bb5, type: 3}
+  damage: 5
+  range: 60
+  cooldown: 0.15
+  isAutomatic: 1

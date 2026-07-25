@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 199226664080650972}
   - component: {fileID: 7358103373097876125}
   m_Layer: 0
-  m_Name: Muzzle Flash VFX
+  m_Name: Muzzle Flash VFX 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4861,7 +4861,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 2203773368e4340d98c114f55c2dd7fd, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4d6281aa604094f04839cffa502096c0, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
