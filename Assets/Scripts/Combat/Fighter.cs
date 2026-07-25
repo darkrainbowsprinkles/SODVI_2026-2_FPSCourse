@@ -6,16 +6,40 @@ namespace FPS.Combat
     {
         [SerializeField] GunSO defaultGunSO;
         [SerializeField] Transform gunContainer;
-        Gun currrentGun;
+        Gun currentGun;
+        GunSO currentGunSO;
+        float timeSinceLastFire = Mathf.Infinity;
+
+        public GunSO GetCurrentGunSO()
+        {
+            return currentGunSO;
+        }
 
         public void Fire()
         {
-            currrentGun.Fire(defaultGunSO.GetDamage(), defaultGunSO.GetRange());
+            if (timeSinceLastFire < currentGunSO.GetCooldown())
+            {
+                return;
+            }
+
+            currentGun.Fire(currentGunSO.GetDamage(), currentGunSO.GetRange());
+            timeSinceLastFire = 0f;
         }
 
         void Awake()
         {
-            currrentGun = defaultGunSO.Spawn(gunContainer);
+            EquipGun(defaultGunSO);
+        }
+
+        void Update()
+        {
+            timeSinceLastFire += Time.deltaTime;
+        }
+
+        void EquipGun(GunSO newGunSO)
+        {
+            currentGunSO = newGunSO;
+            currentGun = newGunSO.Spawn(gunContainer);
         }
     }
 }

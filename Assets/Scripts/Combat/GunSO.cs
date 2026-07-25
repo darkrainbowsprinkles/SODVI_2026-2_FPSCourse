@@ -8,6 +8,8 @@ namespace FPS.Combat
         [SerializeField] Gun gunPrefab;
         [SerializeField] float damage = 30f;
         [SerializeField] float range = 40f;
+        [SerializeField] float cooldown = 1f;
+        [SerializeField] bool isAutomatic;
 
         public Gun Spawn(Transform container)
         {
@@ -22,6 +24,16 @@ namespace FPS.Combat
         public float GetRange()
         {
             return range;
+        }
+
+        public float GetCooldown()
+        {
+            return cooldown;
+        }
+
+        public bool IsAutomatic()
+        {
+            return isAutomatic;
         }
     }
 }
