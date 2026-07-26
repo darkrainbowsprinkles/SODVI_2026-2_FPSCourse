@@ -121,6 +121,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FPS.Combat.Fighter
   defaultGunSO: {fileID: 11400000, guid: 246a3bc1a1f7c934b8f51bc030f1677b, type: 2}
   gunContainer: {fileID: 0}
+  ammoSlots:
+  - ammoType: 0
+    ammoAmount: 50
+  - ammoType: 1
+    ammoAmount: 30
+  - ammoType: 2
+    ammoAmount: 5
 --- !u!114 &9112587151666805533
 MonoBehaviour:
   m_ObjectHideFlags: 0

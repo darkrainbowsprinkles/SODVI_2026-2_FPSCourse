@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace FPS.Combat
@@ -6,9 +7,11 @@ namespace FPS.Combat
     {
         [SerializeField] GunSO defaultGunSO;
         [SerializeField] Transform gunContainer;
+        [SerializeField] AmmoSlot[] ammoSlots;
         Gun currentGun;
         GunSO currentGunSO;
         float timeSinceLastFire = Mathf.Infinity;
+        Dictionary<AmmoType, int> ammoLookup;
 
         public GunSO GetCurrentGunSO()
         {
@@ -33,18 +36,55 @@ namespace FPS.Combat
                 return;
             }
 
+            AmmoType currentAmmoType = currentGunSO.GetAmmoType();
+
+            if (GetAmmo(currentAmmoType) <= 0)
+            {
+                return;
+            }
+
             currentGun.Fire(currentGunSO.GetDamage(), currentGunSO.GetRange());
             timeSinceLastFire = 0f;
+            AdjustAmmo(currentAmmoType, -1);
+            print($"Ammo type: {currentAmmoType} - {GetAmmo(currentAmmoType)}");
+        }
+
+        [System.Serializable]
+        struct AmmoSlot
+        {
+            public AmmoType ammoType;
+            public int ammoAmount;
         }
 
         void Awake()
         {
+            CreateAmmoLookup();
             EquipGun(defaultGunSO);
         }
 
         void Update()
         {
             timeSinceLastFire += Time.deltaTime;
+        }
+
+        void CreateAmmoLookup()
+        {
+            ammoLookup = new Dictionary<AmmoType, int>();
+
+            foreach (AmmoSlot slot in ammoSlots)
+            {
+                ammoLookup[slot.ammoType] = slot.ammoAmount;
+            }
+        }
+
+        int GetAmmo(AmmoType ammoType)
+        {
+            return ammoLookup[ammoType];
+        }
+
+        void AdjustAmmo(AmmoType ammoType, int ammoAmount)
+        {
+            ammoLookup[ammoType] += ammoAmount;
         }
     }
 }
