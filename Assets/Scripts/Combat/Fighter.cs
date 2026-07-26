@@ -18,6 +18,11 @@ namespace FPS.Combat
             return currentGunSO;
         }
 
+        public void AdjustAmmo(AmmoType ammoType, int ammoAmount)
+        {
+            ammoLookup[ammoType] += ammoAmount;
+        }
+
         public void EquipGun(GunSO newGunSO)
         {
             if (currentGun != null)
@@ -80,11 +85,6 @@ namespace FPS.Combat
         int GetAmmo(AmmoType ammoType)
         {
             return ammoLookup[ammoType];
-        }
-
-        void AdjustAmmo(AmmoType ammoType, int ammoAmount)
-        {
-            ammoLookup[ammoType] += ammoAmount;
         }
     }
 }
