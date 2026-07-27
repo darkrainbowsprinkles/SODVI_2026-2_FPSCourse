@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,14 +14,23 @@ namespace FPS.Combat
         float timeSinceLastFire = Mathf.Infinity;
         Dictionary<AmmoType, int> ammoLookup;
 
+        public event Action OnGunEquipped;
+        public event Action OnAmmoAdjusted;
+
         public GunSO GetCurrentGunSO()
         {
             return currentGunSO;
         }
 
+        public int GetAmmo(AmmoType ammoType)
+        {
+            return ammoLookup[ammoType];
+        }
+
         public void AdjustAmmo(AmmoType ammoType, int ammoAmount)
         {
             ammoLookup[ammoType] += ammoAmount;
+            OnAmmoAdjusted?.Invoke();
         }
 
         public void EquipGun(GunSO newGunSO)
@@ -32,6 +42,7 @@ namespace FPS.Combat
 
             currentGunSO = newGunSO;
             currentGun = newGunSO.Spawn(gunContainer);
+            OnGunEquipped?.Invoke();
         }
 
         public void Fire()
@@ -51,7 +62,6 @@ namespace FPS.Combat
             currentGun.Fire(currentGunSO.GetDamage(), currentGunSO.GetRange());
             timeSinceLastFire = 0f;
             AdjustAmmo(currentAmmoType, -1);
-            print($"Ammo type: {currentAmmoType} - {GetAmmo(currentAmmoType)}");
         }
 
         [System.Serializable]
@@ -80,11 +90,6 @@ namespace FPS.Combat
             {
                 ammoLookup[slot.ammoType] = slot.ammoAmount;
             }
-        }
-
-        int GetAmmo(AmmoType ammoType)
-        {
-            return ammoLookup[ammoType];
         }
     }
 }

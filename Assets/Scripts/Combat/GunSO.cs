@@ -11,6 +11,8 @@ namespace FPS.Combat
         [SerializeField] float cooldown = 1f;
         [SerializeField] bool isAutomatic;
         [SerializeField] AmmoType ammoType;
+        [SerializeField] Sprite icon;
+        [SerializeField] Texture2D crosshair;
 
         public Gun Spawn(Transform container)
         {
@@ -40,6 +42,16 @@ namespace FPS.Combat
         public AmmoType GetAmmoType()
         {
             return ammoType;
+        }
+
+        public Sprite GetIcon()
+        {
+            return icon;
+        }
+
+        public Texture2D GetCrosshair()
+        {
+            return crosshair;
         }
     }
 }
