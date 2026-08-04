@@ -8,6 +8,7 @@ namespace FPS.UI
     public class GunUI : MonoBehaviour
     {
         [SerializeField] RawImage crosshairImage;
+        [SerializeField] RawImage scopeImage;
         [SerializeField] Image gunIconImage;
         [SerializeField] Image ammoIconImage;
         [SerializeField] TMP_Text ammoText;
@@ -22,6 +23,11 @@ namespace FPS.UI
         {
             RefreshGunUI();
             RefreshAmmoUI();
+        }
+
+        void Update()
+        {
+            RefreshScopeUI();
         }
 
         void OnEnable()
@@ -48,6 +54,21 @@ namespace FPS.UI
         {
             GunSO currentGunSO = fighter.GetCurrentGunSO();
             ammoText.text = fighter.GetAmmo(currentGunSO.GetAmmoType()).ToString();
+        }
+
+        void RefreshScopeUI()
+        {
+            GunSO currentGunSO = fighter.GetCurrentGunSO();
+
+            if (currentGunSO.GetScope() == null)
+            {
+                scopeImage.enabled = false;
+                crosshairImage.enabled = true;
+                return;
+            }
+
+            scopeImage.enabled = fighter.IsZooming();
+            crosshairImage.enabled = !fighter.IsZooming();
         }
     }
 }
