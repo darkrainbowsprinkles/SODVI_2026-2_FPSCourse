@@ -110,9 +110,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2310930007543711357, guid: 25e456456ab4d2f4cbdd909f7580282a, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 99735bfbec68f6f4a81aaa06e1c72289, type: 3}
+    - target: {fileID: 2619450383806650340, guid: 25e456456ab4d2f4cbdd909f7580282a, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4062385312271564919, guid: 25e456456ab4d2f4cbdd909f7580282a, type: 3}
+      propertyPath: attackRange
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8896905895260227710, guid: 25e456456ab4d2f4cbdd909f7580282a, type: 3}
       propertyPath: m_Name
       value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 8993376206673785073, guid: 25e456456ab4d2f4cbdd909f7580282a, type: 3}
+      propertyPath: maxSpeed
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
