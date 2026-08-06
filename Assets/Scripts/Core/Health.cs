@@ -7,6 +7,11 @@ namespace FPS.Core
         [SerializeField] float maxHealth = 200f;
         float currentHealth;
 
+        public bool IsDead()
+        {
+            return currentHealth <= 0;
+        }
+
         public void TakeDamage(float damage)
         {
             currentHealth = Mathf.Max(currentHealth - damage, 0f);

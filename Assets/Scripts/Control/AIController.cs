@@ -1,3 +1,4 @@
+using FPS.Core;
 using FPS.Movement;
 using UnityEngine;
 
@@ -7,43 +8,74 @@ namespace FPS.Control
     {
         [SerializeField, Range(0,1)] float chaseSpeedFraction = 0.5f;
         [SerializeField] float chaseRange = 10f;
-        [SerializeField] float attackRange = 2f;
+        [SerializeField] float attackRange = 1.5f;
+        [SerializeField] float hitRange = 3f;
+        [SerializeField] float attackDamage = 30f;
         GameObject player;
         Mover mover;
         Animator animator;
+        Health health;
 
         void Awake()
         {
             player = GameObject.FindWithTag("Player");
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();
+            health = GetComponent<Health>();
         }
 
         void Update()
         {
-            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-
-            if (distanceToPlayer < attackRange)
+            if (health.IsDead())
             {
-                mover.Stop();
-                animator.SetTrigger("attack");
-                mover.LookAt(player);
+                return;
+            }
+
+            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+            bool isAttacking = animator.GetCurrentAnimatorStateInfo(0).IsName("Attack");
+
+            if (isAttacking || distanceToPlayer < attackRange)
+            {
+                AttackBehavior();
             }
             else if (distanceToPlayer < chaseRange)
             {
-                animator.ResetTrigger("attack");
-                mover.MoveTo(player.transform.position, chaseSpeedFraction);
+                ChaseBehavior();
             }
             else
             {
-                mover.Stop();
+                IdleBehavior();
             }
+        }
+
+        void AttackBehavior()
+        {
+            mover.Stop();
+            animator.SetTrigger("attack");
+            mover.LookAt(player);
+        }
+
+        void ChaseBehavior()
+        {
+            animator.ResetTrigger("attack");
+            mover.MoveTo(player.transform.position, chaseSpeedFraction);
+        }
+
+        void IdleBehavior()
+        {
+            mover.Stop();
+            animator.ResetTrigger("attack");
         }
 
         // Called in Unity Events
         void Hit()
         {
-            print("HIT!!!");
+            float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+
+            if (distanceToPlayer < hitRange)
+            {
+                player.GetComponent<Health>().TakeDamage(attackDamage);
+            }
         }
 
         void OnDrawGizmosSelected()
